@@ -51,7 +51,7 @@ sub network_status
                 next if (! $act_con_prop);
                 eval {$con = $act_con_prop -> GetAll('org.freedesktop.NetworkManager.Connection.Active');};
                 next if (!$con);
-                if ($con -> {Id} eq 'xmm7360')
+                if ($con -> {Id} eq 'xmm7560')
                     {
                     $con -> {Path} = $path;
                     $myconn = $con;
@@ -170,4 +170,4 @@ $icon -> signal_connect(
 Glib::Timeout -> add_seconds (1, sub {network_status({status_icon => $icon, dis_item => $disc_item, con_item => $con_item}); print '.';} );
 Gtk3 -> main();
 
-exec ('perl', '/usr/bin/xmm7360_status.pl');
+exec ('perl', '/usr/bin/xmm7560_status.pl');

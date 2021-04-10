@@ -1,12 +1,12 @@
 [Unit]
-Description=XMM7360 Modem Init
+Description=XMM7560 Modem Init
 ConditionPathExists=/dev/ttyXMM1
 After=NetworkManager.service
 Requires=multi-user.target systemd-user-sessions.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/rpc/open_xdatachannel.py -c /etc/xmm7360
+ExecStart=/usr/rpc/open_xdatachannel.py -c /etc/xmm7560
 RemainAfterExit=yes
 TimeoutSec=60
 

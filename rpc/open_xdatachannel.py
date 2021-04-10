@@ -21,8 +21,8 @@ import configargparse
 parser = configargparse.ArgumentParser(
         description='Hacky tool to bring up XMM7x60 modem',
         default_config_files=[
-            '/etc/xmm7360',
-            join(dirname(abspath(__file__)), '..', 'xmm7360.ini')
+            '/etc/xmm7560',
+            join(dirname(abspath(__file__)), '..', 'xmm7560.ini')
         ],
 )
 
@@ -100,7 +100,7 @@ if not cfg.nodefaultroute:
 # Add DNS values to /etc/resolv.conf
 if not cfg.noresolv:
     with open('/etc/resolv.conf', 'a') as resolv:
-        resolv.write('\n# Added by xmm7360\n')
+        resolv.write('\n# Added by xmm7560\n')
         for dns in dns_values['v4'] + dns_values['v6']:
             resolv.write('nameserver %s\n' % dns)
 
@@ -138,7 +138,7 @@ def get_connections():
             config = settings_connection.GetSettings()
             s_con = config["connection"]
             print("name:%s uuid:%s type:%s" % (s_con["id"] ,s_con["uuid"], s_con["type"]))
-            if s_con["id"] == 'xmm7360':
+            if s_con["id"] == 'xmm7560':
                     myconnection = s_con["uuid"]
                     connection_path = path
 
@@ -184,7 +184,7 @@ if (myconnection is not None):
             settings_connection.Update(config)
 else:
     print ("adding connection")
-    n_con = dbus.Dictionary({"type": "generic", "uuid": str(uuid.uuid4()), "id": "xmm7360", "interface-name" : "wwan0"})
+    n_con = dbus.Dictionary({"type": "generic", "uuid": str(uuid.uuid4()), "id": "xmm7560", "interface-name" : "wwan0"})
     addr = dbus.Dictionary(
                     {"address": ip_addr, "prefix": dbus.UInt32(32)}
                 )
